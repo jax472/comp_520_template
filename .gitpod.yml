@@ -1,0 +1,23 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: psql
+    init: gp ports await 5432
+    command: |
+      clear
+      psql -h localhost
+  - name: terminal
+    command: |
+      clear
+      echo "#####"
+      echo "Welcome to COMP520! The goal is to LEARN. Please ask questions in our Discord Server!"
+      echo "PostgreSQL is already installed for you...."
+      echo "Start PostgreSQL by entering the command 'psql' at the command line and pressing enter or by selecting the psql terminal that is already open for you (should be to the right side of this terminal display)"
+      echo "#####"
+      echo ""
+      
+
+vscode:
+  extensions:
+    - cweijan.vscode-mysql-client2
