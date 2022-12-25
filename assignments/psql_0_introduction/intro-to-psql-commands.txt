@@ -1,0 +1,50 @@
+# go to your workspace directory (this is already built for you)
+$ cd /workspace/
+
+# change your working directory to the directory name after your github repo, in my example below my repo is named "comp_520_template"
+$ cd comp_520_template
+
+# change your working directory to the assignments directory
+$ cd assignments
+
+# change your working directory to the psql_0_introduction directory
+$ cd psql_0_introduction
+
+# download dvdrental zip
+$ curl -O -k https://postgresqltutorial.com/wp-content/uploads/2019/05/dvdrental.zip
+
+# unzip it
+$ unzip dvdrental.zip
+
+# Start psql command line interface (CLI)
+psql
+
+# Create the postgres role
+postgres=# CREATE ROLE postgres SUPERUSER LOGIN;
+
+# create the dvdrental database using the CREATE DATABASE statement
+postgres=# create database dvdrental;
+
+# list the databases to ensure the dvdrental database was created
+postgres=# \l
+
+# quit psql by using the \q command
+postgres=# \q
+
+# Learn about the pg_restore tool (already installed) by using the following command:
+$ pg_restore --help
+
+# use the pg_restore tool to restore the dvdrental database
+pg_restore --dbname=dvdrental --verbose dvdrental.tar
+
+# Start psql command line interface (CLI) with the postgres role, forcing it prompt for a password
+$ psql -U postgres
+
+# Change to start working with the dvdrental database
+postgres=# \c dvdrental;
+
+# List the tables in the current database
+dvdrental=# \dt
+
+# Finally, enter the following command to get the number of films in the film table:
+dvdrental=# select count(*) from film;
